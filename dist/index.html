@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet-up Event Planner</title>
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-9">
+          <div class="planner-name">Meet-Up Event Planner</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-9">
+
+      <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#registered-event" aria-controls="registered-event" role="tab" data-toggle="tab">Check events</a>
+          </li>
+          <li role="presentation"  id="signin-tab">
+            <a href="#sign-in" aria-controls="sign-in" role="tab" data-toggle="tab">Sign in</a>
+          </li>
+          <li role="presentation" id="signup-tab">
+            <a href="#sign-up" aria-controls="sign-up" role="tab" data-toggle="tab">Sign up</a>
+          </li>
+          <li role="presentation" id="createevent-tab">
+            <a href="#event-information" aria-controls="event-information" role="tab" data-toggle="tab">Create event</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <!-- display events -->
+          <div role="tabpanel" class="tab-pane active" id="registered-event">
+            <div class="upcomingevent-container">
+              <p class="upcomingevent-p">Upcoming Events</p>
+              <br>
+              <div id="upcoming-event">
+              <!-- display upcoming event -->
+              </div>
+            </div>
+            <br>
+            <button class="btn" type="button" id="check-event">Check more events here</button>
+
+            <!-- display registered events -->
+            <div id="registeredevent-container">
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="sign-in">
+            <form class="form-group signin-form" id="signin-form" name="signinform">
+              <p>Please login</p>
+
+              <br>
+              <label for="signin-email" class="signin-label">Email</label>
+              <input class="form-control my-control" id="signin-email" type="email" name="signinemail" placeholder="email@example.com" required autocomplete="on">
+
+              <br>
+              <label for="signin-password" class="signin-label">Password</label>
+              <input class="form-control my-control" id="signin-password" type="password" placeholder="Password" required>
+            </form>
+            <input class="btn" id="signin-button" type="button" value="Submit">
+            <div id="signin-message"></div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="sign-up">
+            <form class="form-group personal-form" id="personalinfo-form" name="personalform">
+              <p>About you</p>
+              <div class="col-xs-offset-1" id="signup-success"><strong>You have successfully signed up!</strong></div>
+              <div class="col-xs-offset-1" id="signup-failure"><strong>Form is invalid. Please check input fields!</strong></div>
+
+              <label for="name" class="signup-label">Name</label>
+              <input class="form-control my-control" id="name" type="text" name="name" placeholder="Full Name" required autocomplete="on">
+
+              <label for="first-email" class="signup-label">Email Address</label>
+              <input class="form-control my-control" id="first-email" type="email" name="emailone" placeholder="Email@example.com" required autocomplete="on">
+              <div>
+                <div id="firstemail-info" class="col-xs-6 col-xs-offset-2">It is not a valid email address!</div>
+              </div>
+
+              <label for="second-email" class="signup-label">Confirm Address</label>
+              <input class="form-control my-control" id="second-email" type="email" name="emailtwo" placeholder="Confirm Email" required autocomplete="on">
+              <div id="secondemail-info" class="col-xs-6 col-xs-offset-2">The email addresses do not match!</div>
+
+              <label for="first-password" class="signup-label">Password</label>
+              <input class="form-control my-control" id="first-password" type="password" name="passwordone" placeholder="password" required>
+              <div id="password-requirements-container">
+                <div id="password-requirements" class="col-xs-9 col-xs-offset-2">
+                <h4>Password must meet the following requirements:</h4>
+                <ul>
+                  <li id="password-lower" class="password-invalid">At least <strong>one lowercase letter</strong></li>
+                  <li id="password-upper" class="password-invalid">At least <strong>one uppercase letter</strong></li>
+                  <li id="password-number" class="password-invalid">At least <strong>one number</strong></li>
+                  <li id="special-characters" class="password-invalid">At least a symbol of <strong> !, @, #, $, %, ^, & </strong></li>
+                  <li id="illegal-characters" class="password-invalid">No illegal characters</li>
+                  <li id="password-length" class="password-invalid">At least <strong>6 characters</strong></li>
+                </ul>
+                </div>
+              </div>
+
+              <label for="second-password" class="signup-label">Confirm password</label>
+              <input class="form-control my-control" id="second-password" type="password" name="passwordtwo" placeholder="Confirm password" required>
+              <div id="match-requirements" class="col-xs-6 col-xs-offset-2">The passwords must match!</div>
+
+              <br>
+              <p>Optional information</p>
+              <label for="employer" class="signup-label-optional">Employer</label>
+              <input class="form-control  my-control" id="employer" type="text" placeholder="Employer">
+
+              <label for="job-title" class="signup-label-optional">Job title</label>
+              <input class="form-control  my-control" id="job-title" type="text" placeholder="Job title">
+
+              <br>
+              <input class="btn" id="personal-information" type="button" value="Submit">
+            </form>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="event-information">
+            <form class="form-group" id="event-form" name="eventform">
+              <p>What's your event?</p>
+              <div class="col-xs-offset-1" id="event-success"><strong>You have successfully created an event!</strong></div>
+              <div class="col-xs-offset-1" id="event-failure"><strong>Form is invalid. Please check input fields!</strong></div>
+
+              <label for="event-name" class="event-label">Event name</label>
+              <input class="form-control my-control" id="event-name" type="text" placeholder="Event name" required>
+
+              <label for="event-type" class="event-label">Event Type</label>
+              <input list="eventlist" class="form-control my-control" id="event-type" placeholder="Event type" required>
+              <datalist id="eventlist">
+                <option value="birtyday party">birtyday party</option>
+                <option value="conference talk">conference talk</option>
+                <option value="wedding">wedding</option>
+                <option value="sports game">sports game</option>
+              </datalist>
+
+              <label for="event-host" class="event-label">Event host</label>
+              <input class="form-control my-control" id="event-host" type="text" placeholder="Event host" required>
+
+              <label for="location" class="event-label">Location</label>
+              <input class="form-control my-control" id="location" type="text" placeholder="location" required>
+
+              <label for="start-time" class="event-label">Start date and time</label>
+              <input class="form-control my-control" id="start-time" name="starttime" type="datetime-local"  required>
+
+              <label for="end-time" class="event-label">End date and time</label>
+              <input class="form-control my-control" id="end-time" name="endtime" type="datetime-local"  required>
+              <div>
+                <div id="time-info" class="col-xs-6 col-xs-offset-2">Start time must be earlier than end time!</div>
+              </div>
+
+              <label for="guest-list" class="event-label">Guest list</label>
+              <input class="form-control my-control" id="guest-list" type="text" placeholder="Guest list"  required>
+
+              <label for="description" class="event-label-optional">Event description</label>
+              <textarea class="form-control my-control" id="description" cols="50" rows="2" maxlength="100" name="eventDescription" placeholder="Information to guests"></textarea>
+              <div>The text length is no more than 100 letters.</div>
+
+              <br>
+              <input class="btn" id="create-event" type="button" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--for display upcoming event -->
+  <script id="upcomingevent-entry" type="text/x-handlebars-template">
+      <div class="upcomingevent-content">
+        <div class="upcomingevent-header">
+          <h3>{{eventName}}</h3>
+          <div class="upcomingevent-host">By: {{eventHost}}</div>
+        </div>
+        <div class="upcomingevent-body">
+          <div class="eventtime-container">
+            <div class="upcomingevent-starttime"><p>Start: {{startTime}}</p></div>
+            <div class="upcomingevent-endtime"><p>End: {{endTime}}</p></div>
+          </div>
+          <div class="upcomingevent-type">
+            <div>Event Type:</div>
+            <div>&ensp;&ensp;&ensp;&ensp;{{eventType}}</div>
+          </div>
+          <div class="upcomingevent-gestlist">
+            <div>Guests:</div>
+            <div>&ensp;&ensp;&ensp;&ensp;{{gestList}}</div>
+          </div>
+          <div class="upcomingevent-description">
+            <div>Additional Information:</div>
+            <div>&ensp;&ensp;&ensp;&ensp;{{description}}</div>
+          </div>
+          <div class="upcomingevent-location">
+            <div>Location (Click for map):</div>
+            <div>
+              <div id="address-placeholder">&ensp;&ensp;&ensp;</div>
+              <div id="upcomingevent-address"><a>{{location}}</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- for display event list-->
+  <script id="event-entry" type="text/x-handlebars-template">
+    <br>
+    <div>
+      <div class="event-display"><p>{{eventName}}</p></div>
+      <div class="event-display"><p>{{eventType}}</p></div>
+      <div class="event-display"><p>{{eventHost}}</p></div>
+      <div class="event-display"><p>{{location}}</p></div>
+    </div>
+  </script>
+
+  <!-- JavaScript files-->
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/handlebars.min.js"></script>
+  <script src="js/main.min.js"></script>
+
+</body>
+</html>
